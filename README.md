@@ -1,0 +1,21 @@
+# Flutter RoadMap
+
+This repository documents my progress while learning Flutter, following a structured roadmap that starts with programming fundamentals and gradually moves toward building real mobile applications.
+
+## Current Progress
+
+- ✅ Stage 1: Introduction to Programming
+- ✅ Stage 2: Problem Solving
+- ✅ Stage 3: Dart Fundamentals
+- 🔄 Stage 4: Git & GitHub
+
+This repository will be updated as I complete each stage of the roadmap.
+
+## Repository Structure
+
+```text
+Stage_1/
+Stage_2/
+Stage_3/
+Stage_4/
+```
