@@ -20,4 +20,6 @@ Stage_01_Introduction_to_Programming/
 Stage_02_Problem_Solving/
 Stage_03_Dart_Basics/
 Stage_04_Git_GitHub/
+Stage_05_Introduction_to_flutter/
+Stage_06_Flutter_Widgets_Fundame/
 ```
