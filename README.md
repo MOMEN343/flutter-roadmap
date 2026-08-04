@@ -8,6 +8,8 @@ This repository documents my progress while learning Flutter, following a struct
 - ✅ Stage 2: Problem Solving
 - ✅ Stage 3: Dart Fundamentals
 - ✅ Stage 4: Git & GitHub
+- ✅ Stage 5: Introduction to flutter
+- ✅ Stage 6: Flutter Widgets Fundamentals
 
 This repository will be updated as I complete each stage of the roadmap.
 
