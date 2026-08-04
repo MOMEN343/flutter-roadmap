@@ -7,15 +7,15 @@ This repository documents my progress while learning Flutter, following a struct
 - ✅ Stage 1: Introduction to Programming
 - ✅ Stage 2: Problem Solving
 - ✅ Stage 3: Dart Fundamentals
-- 🔄 Stage 4: Git & GitHub
+- ✅ Stage 4: Git & GitHub
 
 This repository will be updated as I complete each stage of the roadmap.
 
 ## Repository Structure
 
 ```text
-Stage_1/
-Stage_2/
-Stage_3/
-Stage_4/
+Stage_01_Introduction_to_Programming/
+Stage_02_Problem_Solving/
+Stage_03_Dart_Basics/
+Stage_04_Git_GitHub/
 ```
