@@ -10,6 +10,7 @@ This repository documents my progress while learning Flutter, following a struct
 - ✅ Stage 4: Git & GitHub
 - ✅ Stage 5: Introduction to flutter
 - ✅ Stage 6: Flutter Widgets Fundamentals
+- ✅ Stage 7: Responsive Design, Layout
 
 This repository will be updated as I complete each stage of the roadmap.
 
@@ -22,4 +23,5 @@ Stage_03_Dart_Basics/
 Stage_04_Git_GitHub/
 Stage_05_Introduction_to_flutter/
 Stage_06_Flutter_Widgets_Fundame/
+Stage_07_Responsive Design, Layout/
 ```
