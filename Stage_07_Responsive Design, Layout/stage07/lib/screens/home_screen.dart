@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:stage07/screens/product_screen.dart';
+import 'package:stage07/screens/products_screen.dart';
+import 'package:stage07/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -145,7 +148,13 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ProductsScreen(),
+                              ),
+                            );
+                          },
                           child: Text(
                             "See All",
                             style: TextStyle(color: Color(0xFFc46050)),
@@ -222,14 +231,26 @@ class _HomeScreen extends State<HomeScreen> {
                     Column(
                       spacing: 10,
                       children: [
-                        PizzaCard(
-                          image: 'Pepperoni_Pizza.png',
-                          pizzaName: 'Pepperoni Pizza',
-                          subTitle: 'Offer valid today only',
-                          min: 20,
-                          rate: 4.5,
-                          price: 10.00,
-                          offPercent: 25,
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ProductScreen(
+                                  imageName: "Pepperoni_Pizza.png",
+                                  pizzaName: "Pepperoni Pizza",
+                                ),
+                              ),
+                            );
+                          },
+                          child: PizzaCard(
+                            image: 'Pepperoni_Pizza.png',
+                            pizzaName: 'Pepperoni Pizza',
+                            subTitle: 'Offer valid today only',
+                            min: 20,
+                            rate: 4.5,
+                            price: 10.00,
+                            offPercent: 25,
+                          ),
                         ),
 
                         PizzaCard(
@@ -358,7 +379,7 @@ class _PizzaCardState extends State<PizzaCard> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
       width: double.infinity,
-      height: 150,
+      height: 170,
       decoration: BoxDecoration(
         color: Color(0xFFf5f5f5),
         borderRadius: BorderRadius.circular(20),
