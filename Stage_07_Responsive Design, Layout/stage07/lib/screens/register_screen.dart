@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stage07/managers/text_form_field_style.dart';
+import 'package:stage07/screens/login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -9,6 +11,8 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreen extends State<RegisterScreen> {
   bool checkBoxStatus = true;
+  bool obscurePassword = true;
+  GlobalKey<FormState> formkey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,6 +65,7 @@ class _RegisterScreen extends State<RegisterScreen> {
                       ),
                     ),
                   ),
+
                   Container(
                     padding: EdgeInsets.only(top: 10),
                     child: Column(
@@ -68,162 +73,111 @@ class _RegisterScreen extends State<RegisterScreen> {
                       spacing: 0,
                       children: [
                         //TextFeilds
-                        Column(
-                          spacing: 10,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Name",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                                TextField(
-                                  decoration: InputDecoration(
-                                    isDense: true,
-
-                                    contentPadding: EdgeInsets.symmetric(
-                                      vertical: 15,
-                                      horizontal: 25,
-                                    ),
-
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFFC5819),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromARGB(
-                                          255,
-                                          225,
-                                          222,
-                                          219,
-                                        ),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-
-                                    hintText: "Enter Your Name",
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 156, 155, 153),
+                        Form(
+                          key: formkey,
+                          child: Column(
+                            spacing: 10,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Name",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                       fontSize: 13,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Email",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
+                                  TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return "Can't be Empty";
+                                      } else if (value.length > 30) {
+                                        return "Name is too long";
+                                      }
+                                    },
+                                    decoration: TextFormFieldStyle
+                                        .inputDecoration
+                                        .copyWith(hintText: "Enter Your Name"),
                                   ),
-                                ),
-                                TextField(
-                                  decoration: InputDecoration(
-                                    isDense: true,
-                                    contentPadding: EdgeInsets.symmetric(
-                                      vertical: 15,
-                                      horizontal: 25,
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFFC5819),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromARGB(
-                                          255,
-                                          225,
-                                          222,
-                                          219,
-                                        ),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
+                                ],
+                              ),
 
-                                    hintText: "Enter Your Email",
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 156, 155, 153),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Email",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                       fontSize: 13,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Password",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
+                                  TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return "Can't be empty";
+                                      } else if (!value.contains("@") ||
+                                          !value.contains(".com")) {
+                                        return "Enter a valid Email";
+                                      }
+                                    },
+                                    decoration:
+                                        TextFormFieldStyle.inputDecoration,
                                   ),
-                                ),
-                                TextField(
-                                  decoration: InputDecoration(
-                                    isDense: true,
-                                    contentPadding: EdgeInsets.symmetric(
-                                      vertical: 15,
-                                      horizontal: 25,
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFFFC5819),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromARGB(
-                                          255,
-                                          225,
-                                          222,
-                                          219,
-                                        ),
-                                        width: 2,
-                                      ),
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
+                                ],
+                              ),
 
-                                    suffixIconColor: Color.fromARGB(
-                                      255,
-                                      182,
-                                      180,
-                                      179,
-                                    ),
-                                    suffixIcon: Icon(
-                                      Icons.remove_red_eye_outlined,
-                                    ),
-                                    hintText: "Enter Your Password",
-                                    hintStyle: TextStyle(
-                                      color: Color.fromARGB(255, 156, 155, 153),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Password",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                       fontSize: 13,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                  TextFormField(
+                                    obscureText: obscurePassword,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return "Can't be Empty";
+                                      } else if (value.length < 6) {
+                                        return "Password long can't be less than 6";
+                                      }
+                                    },
+                                    decoration: TextFormFieldStyle
+                                        .inputDecoration
+                                        .copyWith(
+                                          hintText: "Enter Your Password",
+
+                                          suffixIcon: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                obscurePassword =
+                                                    !obscurePassword;
+                                              });
+                                            },
+                                            icon: Icon(
+                                              obscurePassword
+                                                  ? Icons
+                                                        .visibility_off_outlined
+                                                  : Icons.visibility_outlined,
+                                            ),
+                                          ),
+                                          suffixIconColor: Color.fromARGB(
+                                            255,
+                                            182,
+                                            180,
+                                            179,
+                                          ),
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
 
                         //Remember me and forget pass
@@ -304,7 +258,15 @@ class _RegisterScreen extends State<RegisterScreen> {
                               }),
                             ),
 
-                            onPressed: () {},
+                            onPressed: () {
+                              if (formkey.currentState!.validate()) {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreen(),
+                                  ),
+                                );
+                              }
+                            },
                             child: Text(
                               "Sign in",
                               style: TextStyle(

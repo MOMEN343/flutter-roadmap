@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stage07/managers/text_form_field_style.dart';
 import 'package:stage07/screens/home_screen.dart';
+import 'package:stage07/screens/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,7 +12,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreen extends State<LoginScreen> {
   bool checkBoxStatus = true;
+  bool obscurePassword = true;
   GlobalKey<FormState> formKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,54 +26,54 @@ class _LoginScreen extends State<LoginScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    child: Center(
-                      child: Column(
-                        spacing: 0,
-                        children: [
-                          Container(
-                            width: 170,
-                            height: 120,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("Images/logo.jpg"),
-                                fit: BoxFit.contain,
-                              ),
+                  //Logo & Welcome texts
+                  Center(
+                    child: Column(
+                      spacing: 0,
+                      children: [
+                        Container(
+                          width: 170,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("Images/logo.jpg"),
+                              fit: BoxFit.contain,
                             ),
                           ),
+                        ),
 
-                          Column(
-                            children: [
-                              Text(
-                                "Welcome to Pippino Pizza",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                overflow: TextOverflow.ellipsis,
+                        Column(
+                          children: [
+                            Text(
+                              "Welcome to Pippino Pizza",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                               ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
 
-                              Text(
-                                "Peppino Pizza handcrafted, and always delicious",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color.fromARGB(255, 142, 141, 140),
-                                ),
-                                overflow: TextOverflow.ellipsis,
+                            Text(
+                              "Peppino Pizza handcrafted, and always delicious",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Color.fromARGB(255, 142, 141, 140),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
+
+                  //Form
                   Container(
                     padding: EdgeInsets.only(top: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       spacing: 0,
                       children: [
-                        //TextFeilds
                         Form(
                           key: formKey,
                           child: Column(
@@ -85,51 +89,18 @@ class _LoginScreen extends State<LoginScreen> {
                                       fontSize: 13,
                                     ),
                                   ),
+
                                   TextFormField(
                                     validator: (value) {
-                                      if (value!.isEmpty) {
+                                      if (value == null || value.isEmpty) {
                                         return "Can't be empty";
-                                      } else if (value != "momen@gmail.com") {
+                                      } else if (!value.contains("@") ||
+                                          !value.contains(".com")) {
                                         return "Enter a valid Email";
                                       }
                                     },
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      contentPadding: EdgeInsets.symmetric(
-                                        vertical: 15,
-                                        horizontal: 25,
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFFC5819),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color.fromARGB(
-                                            255,
-                                            225,
-                                            222,
-                                            219,
-                                          ),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-
-                                      hintText: "Enter Your Email",
-                                      hintStyle: TextStyle(
-                                        color: Color.fromARGB(
-                                          255,
-                                          156,
-                                          155,
-                                          153,
-                                        ),
-                                        fontSize: 13,
-                                      ),
-                                    ),
+                                    decoration:
+                                        TextFormFieldStyle.inputDecoration,
                                   ),
                                 ],
                               ),
@@ -145,59 +116,39 @@ class _LoginScreen extends State<LoginScreen> {
                                     ),
                                   ),
                                   TextFormField(
+                                    obscureText: obscurePassword,
                                     validator: (value) {
-                                      if (value!.isEmpty) {
+                                      if (value == null || value.isEmpty) {
                                         return "Can't be Empty";
-                                      } else if (value != "123") {
-                                        return "Wrong Password";
+                                      } else if (value.length < 6) {
+                                        return "Password long can't be less than 6";
                                       }
                                     },
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      contentPadding: EdgeInsets.symmetric(
-                                        vertical: 15,
-                                        horizontal: 25,
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFFC5819),
-                                          width: 2,
-                                        ),
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color.fromARGB(
+                                    decoration: TextFormFieldStyle
+                                        .inputDecoration
+                                        .copyWith(
+                                          hintText: "Enter your Password",
+                                          suffixIconColor: Color.fromARGB(
                                             255,
-                                            225,
-                                            222,
-                                            219,
+                                            182,
+                                            180,
+                                            179,
                                           ),
-                                          width: 2,
+                                          suffixIcon: IconButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                obscurePassword =
+                                                    !obscurePassword;
+                                              });
+                                            },
+                                            icon: Icon(
+                                              obscurePassword
+                                                  ? Icons
+                                                        .visibility_off_outlined
+                                                  : Icons.visibility_outlined,
+                                            ),
+                                          ),
                                         ),
-                                        borderRadius: BorderRadius.circular(30),
-                                      ),
-
-                                      suffixIconColor: Color.fromARGB(
-                                        255,
-                                        182,
-                                        180,
-                                        179,
-                                      ),
-                                      suffixIcon: Icon(
-                                        Icons.remove_red_eye_outlined,
-                                      ),
-                                      hintText: "Enter Your Password",
-                                      hintStyle: TextStyle(
-                                        color: Color.fromARGB(
-                                          255,
-                                          156,
-                                          155,
-                                          153,
-                                        ),
-                                        fontSize: 13,
-                                      ),
-                                    ),
                                   ),
                                 ],
                               ),
@@ -403,14 +354,27 @@ class _LoginScreen extends State<LoginScreen> {
 
                                           alignment: Alignment.centerRight,
                                         ),
-                                        child: Text(
-                                          "Sign in",
-                                          style: TextStyle(
-                                            color: Color(0xFFFB5414),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12,
+                                        child: TextButton(
+                                          style: TextButton.styleFrom(
+                                            padding: EdgeInsets.zero,
                                           ),
-                                          overflow: TextOverflow.ellipsis,
+                                          onPressed: () {
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    RegisterScreen(),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            "Sign in",
+                                            style: TextStyle(
+                                              color: Color(0xFFFB5414),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12,
+                                            ),
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
                                         ),
                                       ),
                                     ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stage07/screens/contact_us.dart';
 import 'package:stage07/screens/products_screen.dart';
 import 'package:stage07/screens/three_tabs_app.dart';
 
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: threeTabsApp());
+    return MaterialApp(home: ContactUs());
   }
 }
