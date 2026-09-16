@@ -29,6 +29,5 @@ Stage_06_Flutter_Widgets_Fundame/
 Stage_07_Responsive Design, Layout/
 Stage_08_Navigation/
 Stage_09_Validation&Forms/
-Stage_10_State_Management
-Stage_09_Validation&Forms/
+Stage_10_State_Management/
 ```
