@@ -82,6 +82,7 @@ import 'package:stage10/stages/stage13/Login%20State/provider/auth_provider.dart
 import 'package:stage10/stages/stage13/Login%20State/screens/home_screen.dart';
 import 'package:stage10/stages/stage13/Products%20State/screens/products_screen.dart';
 import 'package:stage10/stages/stage13/cart%20State/screens/cart_screen.dart';
+import 'package:stage10/stages/stage13/favorites_state/screens/favorites_screen.dart';
 
 import 'package:stage10/stages/stage13/counter/screens/counter_screen.dart';
 
@@ -98,8 +99,9 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoggedIn = ref.watch(authProvider);
 
-    return MaterialApp(home: CartScreen());
+    return const MaterialApp(home: FavoritesScreen());
 
+    // return MaterialApp(home: CartScreen());
     // return MaterialApp(home: isLoggedIn? HomeScreen() : LoginScreen());
   }
 }
